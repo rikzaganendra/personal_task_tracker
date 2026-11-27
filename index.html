@@ -14,11 +14,24 @@
         </header>
 
         <section class="app__content">
-            <ul id="task-list" class="task-list" aria-label="Daftar tugas"></ul>
-            <p id="empty-state" class="empty-state">
-                Belum ada tugas. Tambahkan tugas pertamamu!
-            </p>
-        </section>
+    <form id="task-form" class="task-form">
+        <input
+            type="text"
+            id="task-input"
+            class="task-form__input"
+            placeholder="Apa yang mau kamu kerjakan?"
+            required
+            maxlength="120"
+            autocomplete="off"
+        >
+        <button type="submit" class="task-form__button">Tambah</button>
+    </form>
+
+    <ul id="task-list" class="task-list" aria-label="Daftar tugas"></ul>
+    <p id="empty-state" class="empty-state">
+        Belum ada tugas. Tambahkan tugas pertamamu!
+    </p>
+</section>
     </main>
 
     <script src="script.js"></script>
