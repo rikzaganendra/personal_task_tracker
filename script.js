@@ -49,3 +49,7 @@
 
     renderTasks();
 })();
+const appName = 'Project Tracker';
+let tasks = [];
+function addTask(task) { tasks.push(task); }
+console.log('Task berhasil ditambahkan');
