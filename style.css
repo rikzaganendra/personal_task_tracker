@@ -1,117 +1,136 @@
 :root {
-    --color-bg: #0f172a;
-    --color-surface: #1e293b;
-    --color-text: #e2e8f0;
-    --color-muted: #94a3b8;
-    --color-accent: #38bdf8;
-    --radius: 12px;
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-accent: #38bdf8;
+  --radius: 12px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: var(--color-bg);
-    color: var(--color-text);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 2rem 1rem;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
 .app {
-    width: 100%;
-    max-width: 560px;
+  width: 100%;
+  max-width: 560px;
 }
 
 .app__header {
-    margin-bottom: 2rem;
-    text-align: center;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .app__title {
-    font-size: 2rem;
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
 }
 
 .app__subtitle {
-    color: var(--color-muted);
+  color: var(--color-muted);
 }
 
 .app__content {
-    background: var(--color-surface);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
 }
 
 .task-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .empty-state {
-    text-align: center;
-    color: var(--color-muted);
-    padding: 2rem 0;
+  text-align: center;
+  color: var(--color-muted);
+  padding: 2rem 0;
 }
 /* ===== Task Form ===== */
 .task-form {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .task-form__input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-surface);
-    border-radius: var(--radius);
-    color: var(--color-text);
-    font-size: 1rem;
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-surface);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-size: 1rem;
 }
 
 .task-form__input:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 1px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
 }
 
 .task-form__button {
-    padding: 0.75rem 1.25rem;
-    background: var(--color-accent);
-    color: var(--color-bg);
-    border: none;
-    border-radius: var(--radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
 .task-form__button:hover {
-    opacity: 0.85;
+  opacity: 0.85;
 }
 
 /* ===== Task List Items ===== */
 .task-list__item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: var(--color-bg);
-    border-radius: var(--radius);
-    border-left: 3px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--color-accent);
 }
 
 .task-list__text {
-    flex: 1;
-    word-break: break-word;
+  flex: 1;
+  word-break: break-word;
+}
+.task-list__delete {
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.task-list__delete:hover {
+  color: #ef4444;
 }
 .task-list__item--done {
     opacity: 0.6;
