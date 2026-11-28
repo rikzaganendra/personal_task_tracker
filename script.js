@@ -8,22 +8,26 @@
     const taskList = document.getElementById('task-list');
     const emptyState = document.getElementById('empty-state');
 
-    /** @type {string[]} */
+    /** @type {{id: string, text: string, done: boolean}[]} */
     const tasks = [];
 
-    /**
-     * Buat elemen <li> untuk satu tugas.
-     * @param {string} text
-     * @returns {HTMLLIElement}
-     */
-    function createTaskElement(text) {
+    function createTaskElement(task) {
         const li = document.createElement('li');
         li.className = 'task-list__item';
+        if (task.done) li.classList.add('task-list__item--done');
+        li.dataset.id = task.id;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'task-list__checkbox';
+        checkbox.checked = task.done;
+        checkbox.setAttribute('aria-label', 'Tandai selesai');
 
         const span = document.createElement('span');
         span.className = 'task-list__text';
-        span.textContent = text;
+        span.textContent = task.text;
 
+        li.appendChild(checkbox);
         li.appendChild(span);
         return li;
     }
@@ -41,15 +45,22 @@
         const value = input.value.trim();
         if (!value) return;
 
-        tasks.push(value);
+        tasks.push({ id: crypto.randomUUID(), text: value, done: false });
         input.value = '';
         input.focus();
         renderTasks();
     });
 
+    taskList.addEventListener('change', (event) => {
+        if (event.target.matches('.task-list__checkbox')) {
+            const li = event.target.closest('.task-list__item');
+            const task = tasks.find((t) => t.id === li.dataset.id);
+            if (task) {
+                task.done = event.target.checked;
+                renderTasks();
+            }
+        }
+    });
+
     renderTasks();
 })();
-const appName = 'Project Tracker';
-let tasks = [];
-function addTask(task) { tasks.push(task); }
-console.log('Task berhasil ditambahkan');
