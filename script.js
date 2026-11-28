@@ -8,18 +8,25 @@
   const taskList = document.getElementById("task-list");
   const emptyState = document.getElementById("empty-state");
 
-  /** @type {{ id: string, text: string }[]} */
+  /** @type {{ id: string, text: string, done: boolean }[]} */
   const tasks = [];
 
   /**
    * Buat elemen <li> untuk satu tugas.
-   * @param {{ id: string, text: string }} task
+   * @param {{ id: string, text: string, done: boolean }} task
    * @returns {HTMLLIElement}
    */
   function createTaskElement(task) {
     const li = document.createElement("li");
     li.className = "task-list__item";
+    if (task.done) li.classList.add("task-list__item--done");
     li.dataset.id = task.id;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "task-list__checkbox";
+    checkbox.checked = task.done;
+    checkbox.setAttribute("aria-label", "Tandai selesai");
 
     const span = document.createElement("span");
     span.className = "task-list__text";
@@ -31,6 +38,7 @@
     deleteBtn.textContent = "×";
     deleteBtn.setAttribute("aria-label", "Hapus tugas");
 
+    li.appendChild(checkbox);
     li.appendChild(span);
     li.appendChild(deleteBtn);
     return li;
@@ -50,13 +58,25 @@
     if (!value) return;
 
     tasks.push({
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       text: value,
+      done: false,
     });
 
     input.value = "";
     input.focus();
     renderTasks();
+  });
+
+  taskList.addEventListener("change", (event) => {
+    if (event.target.matches(".task-list__checkbox")) {
+      const li = event.target.closest(".task-list__item");
+      const task = tasks.find((t) => t.id === li.dataset.id);
+      if (task) {
+        task.done = event.target.checked;
+        renderTasks();
+      }
+    }
   });
 
   taskList.addEventListener("click", (event) => {

@@ -1,6 +1,6 @@
 # Personal Task Tracker
 
-Aplikasi web sederhana untuk mencatat dan mengelola tugas harian.
+Aplikasi web sederhana untuk mencatat, mengelola, dan menyelesaikan tugas harian.
 
 ## Fitur
 
